@@ -1,5 +1,5 @@
 {
-  "name": "lancache-/monolithic",
+  "name": "lancache-monolithic",
   "repo": "lancachenet/monolithic:latest",
   "registry": "https://github.com/lancachenet/monolithic",
   "network": "bridge",
