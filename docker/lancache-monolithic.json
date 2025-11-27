@@ -1,0 +1,81 @@
+{
+  "name": "lancache-/monolithic",
+  "repo": "lancachenet/monolithic:latest",
+  "registry": "https://github.com/lancachenet/monolithic",
+  "network": "bridge",
+  "default_shell": "sh",
+  "privileged": false,
+  "extra_parameters": "--no-healthcheck --hostname lancache",
+  "post_parameters": null,
+  "web_ui_url": null,
+  "icon": "https://raw.githubusercontent.com/redvex2460/docker-templates/master/redvex2460/images/lancache.png",
+  "project": "http://lancache.net",
+  "support": null,
+  "description": "This docker container provides a caching proxy server for game download content. For any network with more than one PC gamer in connected this will drastically reduce internet bandwidth consumption.",
+  "paths": [
+    {
+      "name": "Logs-Folder",
+      "host": "/mnt/cache/appdata/lancache/logs",
+      "container": "/data/logs",
+      "mode": "rw",
+      "description": null,
+      "required": true
+    },
+    {
+      "name": "Cache-Folder",
+      "host": null,
+      "container": "/data/cache",
+      "mode": "rw,slave",
+      "description": "Cache-Files location",
+      "required": false
+    }
+  ],
+  "ports": [
+    {
+      "name": "HTTP-Port",
+      "host": "80",
+      "container": "80",
+      "protocol": "tcp",
+      "description": null,
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "HTTPS-Port",
+      "host": "443",
+      "container": "443",
+      "protocol": "tcp",
+      "description": null,
+      "required": false,
+      "mask": false
+    }
+  ],
+  "variables": [
+    {
+      "name": "Cache size",
+      "key": "CACHE_DISK_SIZE",
+      "value": null,
+      "description": "The max amount of disk space the container should use for caching data",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "Cacge index size",
+      "key": "CACHE_INDEX_SIZE",
+      "value": "500m",
+      "description": "Amount of index memory for the nginx cache manager. We recommend 250m of index memory per 1TB of CACHE_DISK_SIZE",
+      "required": false,
+      "mask": false
+    },
+    {
+      "name": "Max Cache age",
+      "key": "CACHE_MAX_AGE",
+      "value": "3560d",
+      "description": "The maximum amount of time a file should be held in cache. There is usually no reason to reduce this - the cache will automatically remove the oldest content if it needs the space.",
+      "required": false,
+      "mask": false
+    }
+  ],
+  "devices": [],
+  "labels": []
+}
