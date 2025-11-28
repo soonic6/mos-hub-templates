@@ -45,7 +45,7 @@
   "variables": [
     {
       "name": "language codes",
-      "key": null,
+      "key": "LANG",
       "value": "de_DE.utf8",
       "description": "Changing the TZ and LANG only impact the way the container logs.",
       "required": true,
